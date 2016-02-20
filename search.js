@@ -1,3 +1,10 @@
+/*!
+ * search.js
+ * https://github.com/sukritchhabra/searchJS
+ *
+ * Author: Sukrit Chhabra
+ * Year: 2016
+ */
 $(document).ready(function() {
     var searchResult_JSON;      // Search results recieved from ajax request and used to create the search result list
     var debounceTimeout = 200;  // Global timeout for debouce.
