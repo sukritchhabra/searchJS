@@ -22,6 +22,10 @@
     padding: 0.5em;
 }
 
+.results li:hover {
+    background-color: #f2f2f2;
+}
+
 .results .selected {
     background-color: #e2e2e2;
 }
