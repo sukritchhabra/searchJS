@@ -8,7 +8,7 @@ $(document).ready(function() {
     var selectedSearchString = "";          // The topic that is finally selected
 
 
-    $('.searchBar').on('keyup', $.debounce(function(event) {
+    $('body').on('keyup', '.searchBar', $.debounce(function(event) {
         var keyPressed = event.keyCode;
         if (keyPressed != 37 && keyPressed != 38 && keyPressed != 39 && keyPressed != 40 && keyPressed != 13) {
             keyupCounter = keyupCounter + 1;
@@ -55,7 +55,7 @@ $(document).ready(function() {
         }
     }, debounceTimeout));
 
-    $('.searchBar').on('keydown', function(event) {
+    $('body').on('keydown', '.searchBar', function(event) {
         var keyPressed = event.keyCode;
         if (keyPressed == 37 || keyPressed == 38 || keyPressed == 39 || keyPressed == 40) {
             var numResults = $('.results li').length;
@@ -106,5 +106,16 @@ $(document).ready(function() {
             searchEvent.searchString = selectedSearchString;    // Adding key searchString to search event
             $('body').trigger(searchEvent);
         }
+    });
+
+    $('body').on('click', '.results li', function(event) {
+        selectedSearchString = $(this).text();
+        $('.searchBar').val(selectedSearchString);
+        $('.results').empty();
+
+        /* Creating search event */
+        var searchEvent = $.Event("search");
+        searchEvent.searchString = selectedSearchString;    // Adding key searchString to search event
+        $('body').trigger(searchEvent);
     });
 });
