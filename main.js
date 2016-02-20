@@ -102,6 +102,11 @@ $(document).ready(function() {
             selectedSearchString = $('.results .selected').text();
             $('.searchBar').val(selectedSearchString);
             $('.results').empty();
+
+            /* Creating search event */
+            var searchEvent = jQuery.event("search");
+            searchEvent.searchString = selectedSearchString;
+            $('body').trigger(searchEvent);
         }
     });
 });
