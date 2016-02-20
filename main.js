@@ -102,7 +102,7 @@ $(document).ready(function() {
             $('.results').empty();
 
             /* Creating search event */
-            var searchEvent = $.event("search");
+            var searchEvent = $.Event("search");
             searchEvent.searchString = selectedSearchString;    // Adding key searchString to search event
             $('body').trigger(searchEvent);
         }
