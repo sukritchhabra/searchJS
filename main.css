@@ -10,7 +10,7 @@
 
 .results {
     width: 100%;
-    padding-left: 0.5em;
+    padding-left: 0em;
 }
 
 .results.active{
@@ -20,4 +20,8 @@
 .results li {
     list-style: none;
     padding: 0.5em;
+}
+
+.results .selected {
+    background-color: #e2e2e2;
 }
