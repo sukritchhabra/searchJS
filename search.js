@@ -24,16 +24,11 @@ $(document).ready(function() {
             } else {
                 debounceTimeout = 200;
             }
-            // console.log('\n\n');
-            // console.log(keyupCounter);
-            // console.log(event);
+
             $('.results').empty();
             $('.results').removeClass('active');
-            console.log('\n\nemptied results');
 
             searchText = $('.searchBar').val();
-            //console.log('Search text: ' + searchText);
-
 
             if (searchText != "") {
                 /* Getting search result for the current search string in the search bar */
@@ -42,9 +37,7 @@ $(document).ready(function() {
                     type: "GET",
                     async: false,
                     success: function (response) {
-                        // console.log(response);
                         searchResult_JSON = JSON.parse(response);
-                        console.log(searchResult_JSON);
                     }
                 });
 
@@ -70,16 +63,13 @@ $(document).ready(function() {
 
             if (keyPressed == 40) {     /* If _DOWN_ key is pressed */
                 if (selectedIndex < 0) {
-                    console.log('\n\nundefined');
                     $('.results li').eq(0).addClass('selected');    // Select the new element
                     selectedIndex = 0;
                     selectedSearchResult = $('.results .selected');
                 } else {
-                    console.log('\n\nprevious selection index: ' + selectedIndex);
                     $('.results li').eq(selectedIndex).removeClass('selected');     // Remove Selection from previously selected element
                     $('.results li').eq((selectedIndex + 1)%numResults).addClass('selected');   // Select the new element
                     selectedIndex = (selectedIndex + 1)%numResults;
-                    console.log('new selection index: ' + selectedIndex);
                     selectedSearchResult = $('.results .selected');
                 }
             } else if (keyPressed == 38) {  /* If _UP_ key is pressed */
@@ -88,7 +78,6 @@ $(document).ready(function() {
                     selectedIndex = numResults - 1;
                     selectedSearchResult = $('.results .selected');
                 } else {
-                    console.log('\n\nprevious selection index: ' + selectedIndex);
                     $('.results li').eq(selectedIndex).removeClass('selected');     // Remove Selection from previously selected element
 
                     if (selectedIndex < 1) {
@@ -99,7 +88,6 @@ $(document).ready(function() {
                         selectedIndex = selectedIndex - 1;
 
                     }
-                    console.log('new selection index: ' + selectedIndex);
                     selectedSearchResult = $('.results .selected');
                 }
             }
