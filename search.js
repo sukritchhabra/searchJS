@@ -108,6 +108,10 @@ $(document).ready(function() {
             var searchEvent = $.Event("search");
             searchEvent.searchString = selectedSearchString;    // Adding key searchString to search event
             $('body').trigger(searchEvent);
+        } else if (keyPressed == 27) {
+            $('.searchBar').val("");
+            $('.results').removeClass('active');
+            $('.results').empty();
         }
     });
 
