@@ -1,4 +1,4 @@
-/*!
+/*
  * search.js
  * https://github.com/sukritchhabra/searchJS
  *
@@ -13,6 +13,29 @@ $(document).ready(function() {
 
     var selectedSearchResult = undefined;   // Final list element that is selected from the search results
     var selectedSearchString = "";          // The topic that is finally selected
+
+    /**
+     * A function that searches the tags of a object
+     * @param  {[String]} searchItem    [Search item user has entered]
+     * @param  {[JSON]} object          [Object we are looking in for the tags]
+     * @return {[Boolean]}              [Found in tags or not]
+     */
+    function searchTags (searchItem, object) {
+        var tags = object.tags;
+        var numTags = tags.length;
+        var search_lowercase = searchItem.toLowerCase();
+        var tagsContain = false;
+
+        for (var i = 0; i < numTags; i++) {
+            var tag_lowercase = tags[i].toLowerCase();
+            if (tag_lowercase.indexOf(search_lowercase) >= 0 || tags[i].indexOf(searchItem) >= 0) {
+                tagsContain = true;
+                break;
+            }
+        };
+
+        return tagsContain;
+    }
 
 
     $('body').on('keyup', '.searchBar', $.debounce(function(event) {
